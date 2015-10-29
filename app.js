@@ -10,7 +10,7 @@ var app = koa();
 var seq = fibonacci();
 var seq2 = fibonacci();
 var fib = fibonacci();
-for ( var i=0;i<10; i++) {  console.log(seq.next().value.curr); }
+for ( var i=0;i<10; i++) {  console.log(seq.next()); }
 for ( var i=0;i<10; i++) {  console.log(seq.next()); console.log(seq2.next()); }
 
 //enable middlewares
@@ -34,7 +34,9 @@ app.use(function *fibo(next) {
     console.log('fibo start');
     if (this.request.path !== '/fibonacci') return yield next;
     console.log('fibo path');
-    this.body = fib.next();
+    this.body = '<!DOCTYPE html><html><body><h1>Fibonacci number</h1><p>The next fibonacci number in the series is '
+                +fib.next().value.curr
+                +'.</p></body></html>'
 });
 
 //routes
