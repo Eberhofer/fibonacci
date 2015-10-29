@@ -11,15 +11,20 @@ var fib = fibonacci();
 //enable middlewares
 app.use(koaLogger('dev'));
 app.use(koaStatic(__dirname + '/public'));
-app.use(function *middleware1(next) {
-    console.log('middleware1 start');
-    yield next;
-    console.log('middleware1 end');
-});app.use(function *middleware2(next) {
-    console.log('middleware2 start');
-    yield next;
-    console.log('middleware2 end');
+app.use(function *(next) {
+  var start = new Date;
+  yield next;
+  var ms = new Date - start;
+  this.set('X-Response-Time', ms + 'ms');
 });
+app.use(function *(next) {
+  var start = new Date;
+  yield next;
+  var ms = new Date - start;
+  console.log('%s %s - %s', this.method, this.url, ms);
+});
+
+
 app.use(function *fibo(next) {
     console.log('fibo start');
     if (this.request.path !== '/fibonacci') return yield next;
