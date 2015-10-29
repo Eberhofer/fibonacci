@@ -7,7 +7,11 @@
     "start": "node app.js 3000",
     "test": "tape tests/*.js | tap-spec"
   },
-  "author": "Peter Boschung",
+  "author": "Eberhofer",
+  "repository" :{
+    "type" : "git",
+    "url" : "https://github.com/Eberhofer/fiboancci.git"
+  },
   "license": "MIT",
   "dependencies": {
     "koa": "^1.0.0",

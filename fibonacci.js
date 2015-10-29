@@ -13,15 +13,4 @@ function *fibonacci() {
     }
 }
 
-var seq = fibonacci();
-var seq2 = fibonacci();
-
-console.log(seq.next()); // returns 1
-console.log(seq.next()); // returns 2
-
-// do something else
-
-console.log(seq.next()); // returns 3
-
-for ( var i=0;i<10; i++) {  console.log(seq.next()); console.log(seq2.next()); }
 module.exports = fibonacci;

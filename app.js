@@ -6,7 +6,12 @@ var koaLogger = require('koa-logger');
 var koaStatic = require('koa-static');
 var fibonacci = require('./fibonacci')
 var app = koa();
+
+var seq = fibonacci();
+var seq2 = fibonacci();
 var fib = fibonacci();
+for ( var i=0;i<10; i++) {  console.log(seq.next().value.curr); }
+for ( var i=0;i<10; i++) {  console.log(seq.next()); console.log(seq2.next()); }
 
 //enable middlewares
 app.use(koaLogger('dev'));
