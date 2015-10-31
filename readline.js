@@ -2,16 +2,16 @@ var fs = require('fs');
 var readline = require('readline');
 
 var rl = readline.createInterface({
-  input: fs.createReadStream('stocksmsft.csv'),
+  input: fs.createReadStream('fibonacci.js'),
   output: process.stdout,
   terminal: false
 });
 
-
-
 rl.on('line', function(str) {
 	console.log(str);
   console.log("another line");
+  rl.pause();
+  rl.resume();
 });
 rl.on('pause', function() {
 	console.log("pause");
