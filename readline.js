@@ -9,9 +9,7 @@ var rl = readline.createInterface({
 
 rl.on('line', function(str) {
 	console.log(str);
-  console.log("another line");
   rl.pause();
-  rl.resume();
 });
 rl.on('pause', function() {
 	console.log("pause");
